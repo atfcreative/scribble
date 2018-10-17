@@ -1,0 +1,17 @@
+{% extends 'tunr/base.html' %}
+
+{% block content %}
+<h2>{{ comment.title }} <a href="{% url 'comment_edit' pk=comment.pk %}">(edit)</a></h2>
+<h4>{{ post.comment }}</h4>
+
+<img src="{{ comment.photo_url }}" alt="" class="comment-photo">
+
+<h3>Songs <a href="{% url 'comment_create'%}">(+)</a></h3>
+<ul>
+    {% for comments in post.comments.all %}
+        <li>
+            <a href="{% url 'comment_detail' id=song.id %}">{{ comment.title }}-{{ comment.album }}</a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
